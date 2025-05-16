@@ -1,0 +1,18 @@
+<h1 style="text-align: center;">Login Here</h1>
+<div class="form-container">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <input type="email" placeholder="Email ID" formControlName="email" required>
+        <input type="password" placeholder="Password" formControlName="password" required>
+        <div class="captcha">
+            Captcha: <span>{{captcha}}</span>
+            <button type="button" (click)="refreshCaptcha()" class="refresh">
+                <img src="assets/reload.png" alt="reload">
+            </button>
+        </div>
+        <input type="text" placeholder="Enter Captcha" formControlName="captchaInput" required>
+        <div *ngIf="loginError" class="error-message">{{ loginError }}</div>
+        <button type="submit" [disabled]="isLoading">Login</button>
+    </form>
+    <p>Didn't Register yet? <a routerLink="/signup">Signup</a></p>
+    <p><a routerLink="/forgetpassword">Forgot Password?</a></p>
+</div>
